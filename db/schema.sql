@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS penny_db;
+CREATE DATABASE penny_db;
