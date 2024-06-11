@@ -6,22 +6,28 @@
     </nav>
     {{!-- modal space --}}
     <main>
+        {{#if budget.income}}
     <div>
         <h1>Available</h1>
         <div>{{budget.income}}</div>
     </div>
     <div>
-        {{#each categories as |category| }}
-            <div>
-                <h2>
-                    <a href="/category/{{category.id}}">{{category.category_name}}</a>
-                </h2>
+            {{#each categories as |category| }}
                 <div>
-                    {{category.assigned}}
+                    <h2>
+                        <a href="/category/{{category.id}}">{{category.category_name}}</a>
+                    </h2>
+                    <div>
+                        {{category.assigned}}
+                    </div>
                 </div>
+            {{/each}}
+        </div>
+        {{else}}
+            <div>
+                <p>Start a budget now by clicking the 'New Budget' button!</p>
             </div>
-        {{/each}}
-    </div>
+        {{/if}}
     </main>
     <aside>
         {{!-- chart --}}
