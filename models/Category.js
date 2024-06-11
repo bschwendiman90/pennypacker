@@ -1,7 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const User = require('./User');
-const { uniq } = require('lodash');
 
 class Category extends Model {}
 
@@ -18,14 +16,14 @@ Category.init(
       allowNull: false,
       unique: true,
     },
-    available: {
+    assigned: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    user_id: {
+    budget_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'budget',
         key: 'id',
       },
     },
