@@ -1,0 +1,29 @@
+<div>
+    <nav>
+        <button>Dashboard</button>
+        <button>New Transaction</button>
+        <button>Logout</button>
+    </nav>
+    {{!-- Modal space --}}
+    <main>
+        <div>
+            <h1>{{category.category_name}}</h1>
+            <div>{{category.assigned}}</div>
+        </div>
+        <div>
+            {{#each transactions as |transaction| }}
+            <div>
+                <h2>
+                    {{transaction.description}}</a>
+                </h2>
+                <div>
+                    {{transaction.amount}}
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </main>
+    <aside>
+        {{!-- chart --}}
+    </aside>
+</div>

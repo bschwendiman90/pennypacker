@@ -1,0 +1,29 @@
+<div>
+    <nav>
+        <button>New Budget</button>
+        <button>New Category</button>
+        <button>Logout</button>
+    </nav>
+    {{!-- modal space --}}
+    <main>
+    <div>
+        <h1>Available</h1>
+        <div>{{budget.income}}</div>
+    </div>
+    <div>
+        {{#each categories as |category| }}
+            <div>
+                <h2>
+                    <a href="/category/{{category.id}}">{{category.category_name}}</a>
+                </h2>
+                <div>
+                    {{category.assigned}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    </main>
+    <aside>
+        {{!-- chart --}}
+    </aside>
+</div>
