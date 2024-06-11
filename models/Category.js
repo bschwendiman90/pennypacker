@@ -16,14 +16,14 @@ Category.init(
       allowNull: false,
       unique: true,
     },
-    available: {
+    assigned: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    user_id: {
+    budget_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'budget',
         key: 'id',
       },
     },
