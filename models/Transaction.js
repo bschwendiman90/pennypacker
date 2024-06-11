@@ -19,6 +19,10 @@ Transaction.init(
         key: 'category_name',
       },
     },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     amount: {
         type: DataTypes.INTEGER,
         allowNull: false,
