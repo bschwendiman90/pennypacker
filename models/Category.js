@@ -1,7 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const User = require('./User');
-const { uniq } = require('lodash');
 
 class Category extends Model {}
 

@@ -1,7 +1,6 @@
 const User = require('./User');
 const Category = require('./Category');
 const Transaction = require('./Transaction');
-const { on } = require('events');
 
 User.hasMany(Category, {
   foreignKey: 'user_id',

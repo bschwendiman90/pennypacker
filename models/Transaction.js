@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const User = require('./User');
-const Category = require('./Category');
+
 
 class Transaction extends Model {}
 
@@ -16,7 +15,7 @@ Transaction.init(
     category_name: {
       type: DataTypes.STRING,
       references: {
-        model: Category,
+        model: 'category',
         key: 'category_name',
       },
     },
@@ -27,7 +26,7 @@ Transaction.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: User,
+        model: 'user',
         key: 'id',
       },
     },
