@@ -28,4 +28,3 @@ router.get('/dashboard', async (req, res) => {
         res.status(500).json(err);
     }
 });
-

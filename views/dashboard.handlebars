@@ -9,7 +9,7 @@
         {{#if budget.income}}
     <div>
         <h1>Available</h1>
-        <div>{{budget.income}}</div>
+        <div id="budget-income">Available</div>
     </div>
     <div>
             {{#each categories as |category| }}
@@ -19,6 +19,9 @@
                     </h2>
                     <div>
                         {{category.assigned}}
+                    </div>
+                    <div id="category-{{category.id}}">
+                        Available
                     </div>
                 </div>
             {{/each}}
@@ -34,3 +37,5 @@
         <script type="module" src="budgetChart.js"></script>
     </aside>
 </div>
+
+<script src="../js/maths.js"></script>
