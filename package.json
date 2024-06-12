@@ -3,14 +3,21 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
+    "dev": "parcel src/dashboard.handlebars",
+    "build": "parcel build src/dashboard.handlebars",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
+  },
+  "devDependencies": {
+    "parcel": "2.12.0"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@cubejs-client/core": "0.35.23",
+    "chart.js": "4.4.3",
     "bcrypt": "^5.1.1",
     "connect-session-sequelize": "^7.1.7",
     "dotenv": "^16.4.5",

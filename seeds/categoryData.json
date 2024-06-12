@@ -1,0 +1,15 @@
+[
+    {
+        "category_name": "Rent",
+        "assigned": 1400
+    },
+    {
+        "category_name": "Grocery",
+        "assigned": 500
+    },
+    {
+        "category_name": "Fun",
+        "assigned": 200
+    }
+
+]
