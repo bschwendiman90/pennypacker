@@ -1,48 +1,56 @@
-const budgetId = '';
-const categoryId = '';
+const budgetId = document.getElementById("budget-container").dataset.budgetId;
 
 const budgetEndpoint = `/api/budget/${budgetId}`;
-const categoriesEndpoint = `/api/categories/${budgetId}`;
-const transactionsEndpoint = `/api/transactions/${categoryId}`;
+const categoriesEndpoint = `/api/budget/${budgetId}/categories`;
 
 fetch(budgetEndpoint)
-.then(response => response.json())
-.then(budgetData => {
+  .then((response) => response.json())
+  .then((budgetData) => {
     const budgetIncome = budgetData.budget.income;
-    
+
     fetch(categoriesEndpoint)
-    .then(response => response.json())
-    .then(categoriesData => {
+      .then((response) => response.json())
+      .then((categoriesData) => {
         const categories = categoriesData.categories;
+        let totalCategoryAssigned = 0;
 
-        let totalAssigned = 0;
-        categories.forEach(category => {
-            totalAssigned += category.assigned;
+        categories.forEach((category) => {
+          totalCategoryAssigned += category.assigned;
+
+          // Fetch transactions for each category
+          const transactionsEndpoint = `/api/categories/${category.id}/transactions`;
+          fetch(transactionsEndpoint)
+            .then((response) => response.json())
+            .then((transactionsData) => {
+              const transactions = transactionsData.transactions;
+              let totalTransactions = 0;
+
+              transactions.forEach((transaction) => {
+                totalTransactions += transaction.amount;
+              });
+
+              const remainingCategory =
+                category.assigned - totalTransactions;
+              document.querySelector(
+                `#category-${category.id} .category-available`
+              ).innerText = remainingCategory.toFixed(2);
+            })
+            .catch((error) => {
+              console.error("Error fetching transactions data:", error);
+              document.querySelector(
+                `#category-${category.id} .category-available`
+              ).innerText = "Error loading data";
+            });
         });
 
-        const remaining = budgetIncome - totalAssigned;
-
-        document.getElementById('budget-income').innerText = remaining;
-});
-});
-
-fetch(categoriesEndpoint)
-.then(response => response.json())
-.then(categoryData => {
-    const categoryAssigned = categoryData.category.assigned;
-    
-    fetch(transactionsEndpoint)
-    .then(response => response.json())
-    .then(transactionsData => {
-        const transactions = transactionsData.transaction;
-
-        let totalAssigned = 0;
-        transactions.forEach(transaction => {
-            totalAssigned += transaction.assigned;
-        });
-
-        const remaining = categoryAssigned - totalAssigned;
-
-        document.getElementById('category-available').innerText = remaining;
-});
-});
+        const remainingBudget = budgetIncome - totalCategoryAssigned;
+        document.getElementById("budget-income").innerText =
+          remainingBudget.toFixed(2);
+      })
+      .catch((error) => {
+        console.error("Error fetching categories data:", error);
+      });
+  })
+  .catch((error) => {
+    console.error("Error fetching budget data:", error);
+  });
