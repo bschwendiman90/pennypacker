@@ -6,23 +6,23 @@
     </nav>
     {{!-- modal space --}}
     <main>
-        {{#if budget.income}}
-    <div>
-        <h1>Available</h1>
-        <div id="budget-income">Available</div>
-    </div>
-    <div>
-            {{#each categories as |category| }}
-                <div>
-                    <h2>
-                        <a href="/category/{{category.id}}">{{category.category_name}}</a>
-                    </h2>
-                    <div id="category-{{category.id}}">
-                        Available
+        {{#if budget}}
+            <div>
+                <h1>Available</h1>
+                <div id="budget-income">{{ budget.income }}</div>
+            </div>
+            <div>
+                {{#each budget.categories as |category| }}
+                    <div>
+                        <h2>
+                            <a href="/category/{{ category.id }}">{{ category.category_name }}</a>
+                        </h2>
+                        <div id="category-{{ category.id }}">
+                            {{ category.assigned }}
+                        </div>
                     </div>
-                </div>
-            {{/each}}
-        </div>
+                {{/each}}
+            </div>
         {{else}}
             <div>
                 <p>Start a budget now by clicking the 'New Budget' button!</p>
@@ -34,5 +34,3 @@
         <script type="module" src="budgetChart.js"></script>
     </aside>
 </div>
-
-<script src="../js/dashboard-maths.js"></script>

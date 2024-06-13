@@ -6,7 +6,8 @@
     "dev": "parcel src/dashboard.handlebars",
     "build": "parcel build src/dashboard.handlebars",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
   },
   "devDependencies": {
     "parcel": "2.12.0"
