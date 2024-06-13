@@ -48,24 +48,32 @@ router.get('/signup', (req, res) => {
     }
   });
   
+  router.get('/category/:id', withAuth, async (req, res) => {
+    try {
+        // Fetch category data with associated transactions
+        const categoryData = await Category.findByPk(req.params.id, {
+            include: {
+                model: Transaction
+            }
+        });
 
-// router.get('/dashboard', withAuth, async (req, res) => {
-//     try {
-//         const userData = await User.findByPk(req.session.user_id, {
-//             attributes: { exclude: ['password'] },
-//             include: [{ model: Budget }],
-//         });
+        if (!categoryData) {
+            return res.status(404).json({ message: 'Category not found' });
+        }
 
-//         const user = userData.get({ plain: true });
+        const category = categoryData.toJSON(); // Convert to plain JSON object
 
-//         res.render('dashboard', {
-//             ...user,
-//             logged_in: true
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        // Render category.handlebars with category data
+        res.render('category', {
+            category,
+            logged_in: true
+        });
+    } catch (err) {
+        console.error('Error fetching category data:', err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 
 // ! There's no login route since the form is ingrained on the homepage
 // ! Please let me know if that needs to be changed
