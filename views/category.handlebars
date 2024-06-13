@@ -1,27 +1,27 @@
 <div>
     <nav>
-        <button>Dashboard</button>
-        <button>New Transaction</button>
-        <button>Logout</button>
+        <button id="dashboard">Dashboard</button>
+        <button id="new-transaction">New Transaction</button>
+        <button id="logout">Logout</button>
     </nav>
     {{!-- Modal space --}}
     <main>
         <div>
-            <h1>{{category.category_name}}</h1>
-            <div>{{category.assigned}}</div>
+            <h1>{{ category.category_name }}</h1>
+            <div id="available">Available</div> <!-- You might replace this with actual available amount -->
         </div>
-        {{#if transaction}}
+        {{#if category.transactions.length}}
         <div>
-            {{#each transactions as |transaction| }}
+            {{#each category.transactions as |transaction| }}
             <div>
                 <h2>
-                    {{transaction.description}}</a>
+                    {{ transaction.description }}
                 </h2>
                 <div>
-                    {{transaction.amount}}
+                    {{ transaction.amount }}
                 </div>
             </div>
-        {{/each}}
+            {{/each}}
         </div>
         {{else}}
             <p>Add a transaction using the 'New Transaction' button</p>
@@ -31,3 +31,5 @@
         {{!-- chart --}}
     </aside>
 </div>
+
+{{!-- <script src="../js/category-maths.js"></script> --}}

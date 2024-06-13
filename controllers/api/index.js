@@ -4,7 +4,7 @@ const budgetRoutes = require('./budgetRoutes');
 const categoryRoutes = require('./categoryRoutes');
 
 router.use('/users', userRoutes);
-router.use('/budgets', budgetRoutes);
+router.use('/budget', budgetRoutes);
 router.use('/category', categoryRoutes);
 
 

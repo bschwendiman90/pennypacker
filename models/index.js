@@ -22,12 +22,12 @@ Category.belongsTo(Budget, {
 });
 
 Category.hasMany(Transaction, {
-    foreignKey: 'category_name', 
+    foreignKey: 'category_id', 
     onDelete: 'CASCADE'
   });
   
   Transaction.belongsTo(Category, {
-    foreignKey: 'category_name',
+    foreignKey: 'category_id',
   });
 
 module.exports = { User, Budget, Category, Transaction };
