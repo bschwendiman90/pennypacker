@@ -3,6 +3,7 @@ const { User } = require('../../models');
 
 // * Feel free to change anything, but this should be done.
 
+
 router.post('/', async (req, res) => {
     try {
         const userData = await User.create(req.body);
@@ -17,6 +18,8 @@ router.post('/', async (req, res) => {
         res.status(400).json(err);
     }
 });
+
+
 
 router.post('/login', async (req, res) => {
     try {
