@@ -21,15 +21,6 @@ Category.belongsTo(Budget, {
   foreignKey: 'budget_id'
 });
 
-// Budget.hasMany(Transaction, {
-//     foreignKey: 'budget_id',
-//     onDelete: 'CASCADE'
-// });
-
-// Transaction.belongsTo(Budget, {
-//     foreignKey: 'budget_id'
-// });
-
 Category.hasMany(Transaction, {
     foreignKey: 'category_name', 
     onDelete: 'CASCADE'
