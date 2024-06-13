@@ -9,7 +9,7 @@
         {{#if budget}}
             <div>
                 <h1>Available</h1>
-                <div id="budget-income">{{ budget.income }}</div>
+                <div id="budget-income">{{ budget.remainingBudget }}</div> <!-- Display remaining budget -->
             </div>
             <div>
                 {{#each budget.categories as |category| }}
@@ -18,7 +18,7 @@
                             <a href="/category/{{ category.id }}">{{ category.category_name }}</a>
                         </h2>
                         <div id="category-{{ category.id }}">
-                            {{ category.assigned }}
+                            {{ category.available }}
                         </div>
                     </div>
                 {{/each}}
