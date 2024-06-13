@@ -6,16 +6,28 @@ const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        const userData = await User.create(req.body);
+        // Destructure username and password from req.body
+        const { username, password } = req.body;
 
-        req.session.save(() => {
-            req.session.user_id = userData.isSoftDeleted;
-            req.session.logged_in = true;
+        // Check if both username and password are provided
+        if (!username || !password) {
+            return res.status(400).json({ message: 'Username and password are required' });
+        }
 
-            res.status(200).json(userData);
-        });
+        // Create a new user using Sequelize's User model
+        const userData = await User.create({ username, password });
+
+        // Set up session variables if needed
+        req.session.user_id = userData.id; // Assuming userData has an id field
+        req.session.logged_in = true;
+
+        // Respond with the created user data and 201 Created status
+        res.status(201).json(userData);
     } catch (err) {
-        res.status(400).json(err);
+        console.error(err); // Log the error for debugging purposes
+
+        // Respond with 400 Bad Request and the error message
+        res.status(400).json({ message: 'Failed to create user', error: err.message });
     }
 });
 
