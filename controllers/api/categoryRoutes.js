@@ -1,19 +1,28 @@
 const router = require('express').Router();
 const { Category, Transaction } = require('../../models');
 
-router.get('/:id/transactions', async (req, res) => {
-    try {
+router.get('/:id', async (req, res) => {
+  const categoryId = req.params.id;
+
+  try {
+      const category = await Category.findByPk(categoryId);
+
+      if (!category) {
+          return res.status(404).json({ error: 'Category not found' });
+      }
+
+      // Assuming transactions are associated with categories in your data model
       const transactions = await Transaction.findAll({
-        where: {
-          category_id: req.params.category_id
-        }
+          where: { category_id: categoryId }
       });
-      res.status(200).json({ transactions });
-    } catch (error) {
-      console.error('Error fetching transactions:', error);
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  });
+
+      // Render category.handlebars with category and transactions data
+      res.render('category', { category, transactions });
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Server error' });
+  }
+});
 
 router.post('/:id/transactions', async (req, res) => {
     const { category_id } = req.params.id;

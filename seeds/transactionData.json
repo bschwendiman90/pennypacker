@@ -1,0 +1,17 @@
+[
+    {
+      "category_id": 1,
+      "description": "Transaction 1 for Category 1",
+      "amount": 1000
+    },
+    {
+      "category_id": 1,
+      "description": "Transaction 2 for Category 1",
+      "amount": 1500
+    },
+    {
+      "category_id": 1,
+      "description": "Transaction 3 for Category 1",
+      "amount": 800
+    }
+  ]
