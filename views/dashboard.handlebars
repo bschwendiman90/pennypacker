@@ -1,8 +1,8 @@
 <div>
     <nav>
-        <button>New Budget</button>
-        <button>New Category</button>
-        <button>Logout</button>
+        <button id="new-budget">New Budget</button>
+        <button id="new-category">New Category</button>
+        <button id="logout">Logout</button>
     </nav>
     {{!-- modal space --}}
     <main>
@@ -17,9 +17,6 @@
                     <h2>
                         <a href="/category/{{category.id}}">{{category.category_name}}</a>
                     </h2>
-                    <div>
-                        {{category.assigned}}
-                    </div>
                     <div id="category-{{category.id}}">
                         Available
                     </div>
