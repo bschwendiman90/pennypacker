@@ -53,7 +53,8 @@ router.post('/:id/transactions', async (req, res) => {
       console.error('Error creating transaction:', error);
       res.status(500).json({ message: 'Internal server error' });
     }
-  });
+});
   
+
 
 module.exports = router;
