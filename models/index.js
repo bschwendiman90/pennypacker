@@ -6,7 +6,8 @@ const Transaction = require('./Transaction');
 User.hasOne(Budget, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
-    });
+});
+
 Budget.belongsTo(User, {
     foreignKey: 'user_id'
 });
@@ -20,22 +21,13 @@ Category.belongsTo(Budget, {
   foreignKey: 'budget_id'
 });
 
-// Budget.hasMany(Transaction, {
-//     foreignKey: 'budget_id',
-//     onDelete: 'CASCADE'
-// });
-
-// Transaction.belongsTo(Budget, {
-//     foreignKey: 'budget_id'
-// });
-
 Category.hasMany(Transaction, {
-    foreignKey: 'category_name', 
+    foreignKey: 'category_id', 
     onDelete: 'CASCADE'
   });
   
   Transaction.belongsTo(Category, {
-    foreignKey: 'category_name',
+    foreignKey: 'category_id',
   });
 
-module.exports = { User, Category, Transaction };
+module.exports = { User, Budget, Category, Transaction };

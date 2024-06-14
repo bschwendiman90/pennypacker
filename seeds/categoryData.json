@@ -1,0 +1,18 @@
+[
+    {
+        "category_name": "Rent",
+        "assigned": 1400,
+        "budget_id": 1
+    },
+    {
+        "category_name": "Grocery",
+        "assigned": 500,
+        "budget_id": 1
+    },
+    {
+        "category_name": "Fun",
+        "assigned": 200,
+        "budget_id": 1
+    }
+
+]

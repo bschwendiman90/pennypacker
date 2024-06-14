@@ -1,28 +1,28 @@
-<div>
+<div class="homepage">
     <nav>
-        <button>New Budget</button>
-        <button>New Category</button>
-        <button>Logout</button>
+        <button id="new-budget">New Budget</button>
+        <button id="new-category">New Category</button>
+        <button id="logout">Logout</button>
     </nav>
     {{!-- modal space --}}
     <main>
-        {{#if budget.income}}
-    <div>
-        <h1>Available</h1>
-        <div>{{budget.income}}</div>
-    </div>
-    <div>
-            {{#each categories as |category| }}
-                <div>
-                    <h2>
-                        <a href="/category/{{category.id}}">{{category.category_name}}</a>
-                    </h2>
+        {{#if budget}}
+            <div>
+                <h1>Available</h1>
+                <div id="budget-income">{{ budget.remainingBudget }}</div> <!-- Display remaining budget -->
+            </div>
+            <div>
+                {{#each budget.categories as |category| }}
                     <div>
-                        {{category.assigned}}
+                        <h2>
+                            <a href="/category/{{ category.id }}">{{ category.category_name }}</a>
+                        </h2>
+                        <div id="category-{{ category.id }}">
+                            {{ category.available }}
+                        </div>
                     </div>
-                </div>
-            {{/each}}
-        </div>
+                {{/each}}
+            </div>
         {{else}}
             <div>
                 <p>Start a budget now by clicking the 'New Budget' button!</p>
@@ -30,6 +30,44 @@
         {{/if}}
     </main>
     <aside>
-        {{!-- chart --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <div>
+            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        <script>
+        var xValues = ["Italy", "France", "Spain", "USA"];
+        var yValues = [55, 49, 44, 24];
+        var barColors = [
+        "#27CD29",
+        "#D92411",
+        "#1180D9",
+        "#E550F2",
+        "#FF8395",
+        "#527D0B",
+        "#EAB51F",
+        "#91F5D2",
+        "#864231",
+        "#65527D",
+        "#8A3A06",
+        "#CA42CF"
+        ];
+
+        new Chart("myChart", {
+        type: "doughnut",
+        data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+            }]
+        },
+        options: {
+            title: {
+            display: true,
+            text: "Your Budget"
+            }
+        }
+        });
+    </script>
+    </div>
     </aside>
 </div>

@@ -12,11 +12,11 @@ Transaction.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    category_name: {
-      type: DataTypes.STRING,
+    category_id: {
+      type: DataTypes.INTEGER,
       references: {
         model: 'category',
-        key: 'category_name',
+        key: 'id',
       },
     },
     description: {
@@ -26,13 +26,6 @@ Transaction.init(
     amount: {
         type: DataTypes.INTEGER,
         allowNull: false,
-    },
-    budget_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'budget',
-        key: 'id',
-      },
     },
   },
   {

@@ -1,0 +1,38 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    border: 2px red solid;
+    padding: 20px;
+}
+
+main {
+    margin: 20px;
+    display: flex;
+}
+
+.homepage {
+    display: flex;
+    flex-direction: row;
+}
+
+.forms {
+    border: 2px red solid;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    label {
+        font-size: 20px;
+        display: block;
+    }
+    input {
+        padding: 10px;
+    }
+}
+
+.description {
+    border: red 2px solid;
+    padding: 20px;
+}
