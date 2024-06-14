@@ -30,29 +30,44 @@
         {{/if}}
     </main>
     <aside>
-        <div style="width: 200px;"><canvas id="budgetChart"></canvas></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <div>
+            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
         <script>
-            const config = {
-                type: 'doughnut',
-                data: data,
-                };
-                const data = {
-                    labels: [
-                        'Red',
-                        'Blue',
-                        'Yellow'
-                    ],
-                    datasets: [{
-                        label: 'My First Dataset',
-                        data: [300, 50, 100],
-                        backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
-                        ],
-                        hoverOffset: 4
-                    }]
-                    };
-        </script>
+        var xValues = ["Italy", "France", "Spain", "USA"];
+        var yValues = [55, 49, 44, 24];
+        var barColors = [
+        "#27CD29",
+        "#D92411",
+        "#1180D9",
+        "#E550F2",
+        "#FF8395",
+        "#527D0B",
+        "#EAB51F",
+        "#91F5D2",
+        "#864231",
+        "#65527D",
+        "#8A3A06",
+        "#CA42CF"
+        ];
+
+        new Chart("myChart", {
+        type: "doughnut",
+        data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+            }]
+        },
+        options: {
+            title: {
+            display: true,
+            text: "Your Budget"
+            }
+        }
+        });
+    </script>
+    </div>
     </aside>
 </div>
