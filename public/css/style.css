@@ -1,38 +1,102 @@
+:root {
+    --grey: #31334c;
+    --ash: #bdbdcd;
+    --cream: #fffefa;
+}
+
 * {
     margin: 0px;
     padding: 0px;
 }
 
 header {
-    border: 2px red solid;
-    padding: 20px;
+    /* border: 2px red solid; */
+    width: 100%;
+    padding: 30px;
+    background-color: var(--grey);
+    color: var(--cream);
+    h1 {
+        font-size: 50px;
+        text-align: center;
+    }
 }
 
 main {
-    margin: 20px;
+    margin: 40px;
     display: flex;
+    align-items: center;
 }
 
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--ash);
+    padding: 20px;
+}
+
+/* These are found in the homepage */
 .homepage {
     display: flex;
     flex-direction: row;
+    align-content: center;
 }
 
 .forms {
-    border: 2px red solid;
+    border: 2px var(--grey) solid;
+    border-radius: 30px;
+    background-color: var(--ash);
     display: flex;
+    margin-left: 10px;
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 15px;
     label {
-        font-size: 20px;
+        font-size: 25px;
         display: block;
     }
     input {
-        padding: 10px;
+        margin: 10px 0 10px 0;
+        padding: 8px;
+        font-size: 25px;
+    }
+    button {
+        font-size: 20px;
+        background-color: var(--grey);
+        color: var(--cream);
+    }
+}
+
+.login-form {
+    margin: 20px;
+    padding: 20px;
+}
+
+.signup-form {
+    margin: 20px;
+    padding: 20px;
+    button {
+        display: block;
+    }
+}
+
+.redirect {
+    padding-left: 40px;
+    font-size: 20px;
+    a {
+        color: var(--grey);
     }
 }
 
 .description {
-    border: red 2px solid;
+    border: var(--grey) 2px solid;
+    border-radius: 30px;
+    max-width: 70%;
     padding: 20px;
+    margin-left: 20%;
+    font-size: 25px;
+    background-color: var(--ash);
+    line-height: 32px;
 }
+
+/* Start of dashboard rules */
