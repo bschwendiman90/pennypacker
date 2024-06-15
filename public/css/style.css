@@ -37,11 +37,6 @@ footer {
 }
 
 /* These are found in the homepage */
-.homepage {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-}
 
 .forms {
     border: 2px var(--grey) solid;
@@ -100,3 +95,25 @@ footer {
 }
 
 /* Start of dashboard rules */
+
+nav {
+    display: flex;
+    flex-direction: column;
+    max-width: 35%;
+    button {
+        font-size: 20px;
+        margin: 10px;
+        background-color: var(--grey);
+        color: var(--cream);
+    }
+    a {
+        cursor: default;
+        border: 2px black outset;
+        font-family: arial;
+        text-decoration: none;
+        background-color: var(--grey);
+        color: var(--cream);
+        font-size: 20px;
+        padding: 10px;
+    }
+}
