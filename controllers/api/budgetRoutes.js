@@ -15,37 +15,32 @@ router.get('/:id', async (req, res) => {
     }
   });
 
-router.post('/', async (req, res) => {
-    // Assuming user_id is stored in session
-    const user_id = req.session.user_id;
-  
-    // Check if user_id is available in the session
-    if (!user_id) {
-      return res.status(401).json({ message: 'User not logged in' });
-    }
-  
-    // Extract budget information from the request body
-    const { income } = req.body;
-  
-    // Validate input
-    if (!income) {
-      return res.status(400).json({ message: 'Income is required' });
-    }
-  
+  router.delete('/', async (req, res) => {
     try {
-      // Create a new budget entry
-      const newBudget = await Budget.create({
-        income,
-        user_id,
-      });
-  
-      // Respond with the newly created budget
-      res.status(201).json(newBudget);
+        const userId = req.session.user_id; // Using session to get user ID
+        if (!userId) {
+            return res.status(401).send({ message: 'Unauthorized' });
+        }
+        await Budget.destroy({ where: { user_id: userId } });
+        res.status(200).send({ message: 'Budget deleted successfully' });
     } catch (error) {
-      console.error('Error creating budget:', error);
-      res.status(500).json({ message: 'Internal server error' });
+        res.status(500).send({ message: 'Failed to delete budget', error: error });
     }
-  });
+});
+
+router.post('/', async (req, res) => {
+    try {
+        const { income } = req.body;
+        const userId = req.session.user_id; // Using session to get user ID
+        if (!userId) {
+            return res.status(401).send({ message: 'Unauthorized' });
+        }
+        const newBudget = await Budget.create({ income, user_id: userId });
+        res.status(201).send({ message: 'Budget created successfully', budget: newBudget });
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to create budget', error: error });
+    }
+});
 
   router.get('/:id/categories', async (req, res) => {
     try {
