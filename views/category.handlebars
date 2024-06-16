@@ -14,7 +14,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="transaction-form">
                             <div class="mb-3">
                                 <label for="transaction-desc">Description:</label>
                                 <input type="text" class="form-control" id="transaction-desc">
@@ -27,7 +27,7 @@
                     </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save Transaction</button>
+                <button type="button" class="btn btn-primary save-transaction-btn">Save Transaction</button>
                 </div>
             </div>
         </div>
@@ -59,6 +59,8 @@
         {{!-- chart --}}
     </aside>
 </div>
+
+<script src="../js/category.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

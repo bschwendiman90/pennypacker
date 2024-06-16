@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Transaction } = require('../../models');
+const { Category, Transaction, Budget } = require('../../models');
 
 router.get('/:id', async (req, res) => {
   const categoryId = req.params.id;
@@ -24,8 +24,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/:id/transactions', async (req, res) => {
-    const { category_id } = req.params.id;
+router.post('/:id', async (req, res) => {
+    const  category_id  = req.params.id;
     const { description, amount } = req.body;
   
     // Validate input
@@ -52,6 +52,33 @@ router.post('/:id/transactions', async (req, res) => {
     } catch (error) {
       console.error('Error creating transaction:', error);
       res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.post('/', async (req, res) => {
+    try {
+        const userId = req.session.user_id; // Using session to get user ID
+        if (!userId) {
+            return res.status(401).send({ message: 'Unauthorized' });
+        }
+
+        // Find the current budget for the user
+        const currentBudget = await Budget.findOne({ where: { user_id: userId } });
+        if (!currentBudget) {
+            return res.status(404).send({ message: 'No budget found for the current user' });
+        }
+
+        const { category_name, assigned } = req.body;
+        const newCategory = await Category.create({ 
+            category_name, 
+            assigned, 
+            budget_id: currentBudget.id 
+        });
+
+        res.status(201).send({ message: 'Category created successfully', category: newCategory });
+    } catch (error) {
+        console.error('Error creating category:', error);
+        res.status(500).send({ message: 'Failed to create category', error: error });
     }
 });
   
