@@ -47,13 +47,13 @@ footer {
     flex-direction: column;
     padding: 20px 15px;
     label {
-        font-size: 25px;
+        font-size: 23px;
         display: block;
     }
     input {
         margin: 10px 0 10px 0;
         padding: 8px;
-        font-size: 25px;
+        font-size: 20px;
     }
     button {
         font-size: 20px;
@@ -111,7 +111,6 @@ nav {
         color: var(--cream);
     }
     a {
-        cursor: default;
         border: 2px black outset;
         font-family: arial;
         text-decoration: none;
@@ -163,6 +162,10 @@ nav {
     justify-content: space-between;
 }
 
+.dashboard-btn {
+    
+}
+
 #myChart {
     position: relative;
     float: right;
@@ -170,4 +173,28 @@ nav {
     min-width: 2%;
     max-width: 400px;
     padding-left: 20px;
+}
+
+/* Modal styling */
+
+.btn-secondary {
+    background-color: var(--ash);
+    color: var(--grey);
+}
+
+.btn-secondary:hover {
+    background-color: #9999b5;
+    color: #1f2135;
+}
+
+.btn-primary {
+    background-color: var(--grey);
+}
+
+.btn-primary:hover {
+    background-color: #4e5392;
+}
+
+.btn-primary:focus {
+    background-color: #4e5392;
 }
