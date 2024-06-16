@@ -1,19 +1,70 @@
-<div>
+<div class="format-all">
     <nav class="dashboard-btns">
-        <button id="new-budget">New Budget</button>
-        <button id="new-category">New Category</button>
+        <button type="button" id="new-budget" data-bs-toggle="modal" data-bs-target="#budget-modal">New Budget</button>
+        <button type="button" id="new-category" data-bs-toggle="modal" data-bs-target="#category-modal">New Category</button>
         <button id="logout">Logout</button>
     </nav>
-    {{!-- modal space --}}
-    <main>
+    {{!-- NEW BUDGET MODAL W/ LABELS --}}
+        <div class="modal" id="budget-modal" aria-hidden="true" aria-labelledby="budgetModalLabel" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Make a new budget!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="budget-income">Income:</label>
+                                <input type="text" class="form-control" id="budget-income">
+                            </div>
+                        </form>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save Budget</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{{!-- END OF NEW BUDGET MODAL --}}
+{{!-- NEW CATEGORY MODAL --}}
+<div class="modal" id="category-modal" aria-hidden="true" aria-labelledby="categoryModalLabel" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Make a new category!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="category-name">Name of Category:</label>
+                                <input type="text" class="form-control" id="category-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="category-assigned">Assigned amount:</label>
+                                <input type="text" class="form-control" id="category-assigned">
+                            </div>
+                        </form>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{{!-- END OF NEW CATEGORY MODAL --}}
+    <main class="dashboard">
         {{#if budget}}
-        <div>
+        <div class="available">
             <h1>Available</h1>
             <div id="budget-income">{{ budget.remainingBudget }}</div> <!-- Display remaining budget -->
         </div>
-        <div>
+        <div class="categories">
             {{#each budget.categories as |category| }}
-            <div>
+            <div class="category-single">
                 <h2>
                     <a href="/category/{{ category.id }}">{{ category.category_name }}</a>
                 </h2>
@@ -29,10 +80,10 @@
         </div>
         {{/if}}
     </main>
-    <aside>
+    {{!-- <aside>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
         <div>
-            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+            <canvas id="myChart"></canvas>
             <script>
                 var xValues = ["Italy", "France", "Spain", "USA"];
                 var yValues = [55, 49, 44, 24];
@@ -69,7 +120,12 @@
                 });
             </script>
         </div>
-    </aside>
+    </aside> --}}
 </div>
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"
+    ></script>
 <script src="../js/logout.js"></script>
