@@ -24,8 +24,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/:id/transactions', async (req, res) => {
-    const { category_id } = req.params.id;
+router.post('/:id', async (req, res) => {
+    const  category_id  = req.params.id;
     const { description, amount } = req.body;
   
     // Validate input
