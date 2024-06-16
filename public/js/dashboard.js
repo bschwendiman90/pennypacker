@@ -67,3 +67,4 @@ document.querySelector('.save-category-btn').addEventListener('click', async () 
         alert('There was an error saving the category. Please try again.');
     }
 });
+
