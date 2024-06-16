@@ -47,13 +47,13 @@ footer {
     flex-direction: column;
     padding: 20px 15px;
     label {
-        font-size: 25px;
+        font-size: 23px;
         display: block;
     }
     input {
         margin: 10px 0 10px 0;
         padding: 8px;
-        font-size: 25px;
+        font-size: 20px;
     }
     button {
         font-size: 20px;
@@ -111,7 +111,6 @@ nav {
         color: var(--cream);
     }
     a {
-        cursor: default;
         border: 2px black outset;
         font-family: arial;
         text-decoration: none;
@@ -120,6 +119,10 @@ nav {
         font-size: 20px;
         padding: 10px;
     }
+
+    a:hover {
+        color: var(--cream);
+    }
 }
 
 .dashboard {
@@ -127,17 +130,18 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    border: 2px red solid;
+    border-right: 2px var(--ash) solid;
+    border-left: 2px var(--ash) solid;
     margin: 0 0 0 10%;
-    padding: 10px;
+    padding: 0 20px;
     min-width: 400px;
 }
 
-.available {
+.money-total {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    border: 2px red solid;
+    border-bottom: 2px var(--ash) solid;
     min-width: 30%;
     padding: 10px 50px;
     align-content: inherit;
@@ -147,6 +151,12 @@ nav {
         padding: 0 10px;
         align-content: center;
     }
+
+    .total-amount {
+        align-content: center;
+        font-size: 20px;
+    }
+
     #budget-income {
         align-content: center;
     }
@@ -155,12 +165,31 @@ nav {
 .categories {
     padding: 20px;
     text-align: left;
-    border: red solid 2px;
+    /* border: red solid 2px; */
 }
 
-.category-single {
+.box-single {
+    padding: 10px 20px;
+    border-bottom: var(--ash) 2px solid;
     display: flex;
     justify-content: space-between;
+    align-content: center;
+    h2 {
+        padding-right: 40px;
+        align-content: center;
+        font-size: 27px;
+    }
+
+    a {
+        color: var(--grey);
+        text-decoration: none;
+        font-size: 27px;
+    }
+
+    .amount {
+        align-content: center;
+        font-size: 20px;
+    }
 }
 
 #myChart {
@@ -170,4 +199,28 @@ nav {
     min-width: 2%;
     max-width: 400px;
     padding-left: 20px;
+}
+
+/* Modal styling */
+
+.btn-secondary {
+    background-color: var(--ash);
+    color: var(--grey);
+}
+
+.btn-secondary:hover {
+    background-color: #9999b5;
+    color: #1f2135;
+}
+
+.btn-primary {
+    background-color: var(--grey);
+}
+
+.btn-primary:hover {
+    background-color: #4e5392;
+}
+
+.btn-primary:focus {
+    background-color: #4e5392;
 }

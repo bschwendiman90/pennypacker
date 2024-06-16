@@ -1,5 +1,5 @@
 
-<div>
+<div class="format-all">
     <nav>
         <a href="/dashboard"> << Dashboard</a>
         <button type="button" id="new-transaction" data-bs-toggle="modal" data-bs-target="#transaction-modal">New Transaction</button>
@@ -33,19 +33,19 @@
         </div>
     </div>
     {{!-- Modal space --}}
-    <main>
-        <div>
+    <main class="dashboard">
+        <div class="money-total">
             <h1>{{ category.category_name }}</h1>
-            <div id="available">{{ category.availableAmount }}</div> <!-- Display available amount -->
+            <div id="available" class="total-amount">{{ category.availableAmount }}</div> <!-- Display available amount -->
         </div>
         {{#if category.transactions.length}}
         <div>
             {{#each category.transactions as |transaction| }}
-            <div>
+            <div class="box-single">
                 <h2>
                     {{ transaction.description }}
                 </h2>
-                <div>
+                <div class="amount">
                 {{ transaction.amount }}
                 </div>
             </div>
