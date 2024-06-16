@@ -130,13 +130,14 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    border: 2px var(--ash) solid;
+    border-right: 2px var(--ash) solid;
+    border-left: 2px var(--ash) solid;
     margin: 0 0 0 10%;
-    padding: 10px;
+    padding: 0 20px;
     min-width: 400px;
 }
 
-.available {
+.money-total {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -150,6 +151,12 @@ nav {
         padding: 0 10px;
         align-content: center;
     }
+
+    .total-amount {
+        align-content: center;
+        font-size: 20px;
+    }
+
     #budget-income {
         align-content: center;
     }
@@ -161,12 +168,28 @@ nav {
     /* border: red solid 2px; */
 }
 
-.category-single {
+.box-single {
     padding: 10px 20px;
     border-bottom: var(--ash) 2px solid;
     display: flex;
     justify-content: space-between;
-    
+    align-content: center;
+    h2 {
+        padding-right: 40px;
+        align-content: center;
+        font-size: 27px;
+    }
+
+    a {
+        color: var(--grey);
+        text-decoration: none;
+        font-size: 27px;
+    }
+
+    .amount {
+        align-content: center;
+        font-size: 20px;
+    }
 }
 
 #myChart {
