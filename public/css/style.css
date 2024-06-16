@@ -119,6 +119,10 @@ nav {
         font-size: 20px;
         padding: 10px;
     }
+
+    a:hover {
+        color: var(--cream);
+    }
 }
 
 .dashboard {
@@ -126,7 +130,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    border: 2px red solid;
+    border: 2px var(--ash) solid;
     margin: 0 0 0 10%;
     padding: 10px;
     min-width: 400px;
@@ -136,7 +140,7 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    border: 2px red solid;
+    border-bottom: 2px var(--ash) solid;
     min-width: 30%;
     padding: 10px 50px;
     align-content: inherit;
@@ -154,15 +158,14 @@ nav {
 .categories {
     padding: 20px;
     text-align: left;
-    border: red solid 2px;
+    /* border: red solid 2px; */
 }
 
 .category-single {
+    padding: 10px 20px;
+    border-bottom: var(--ash) 2px solid;
     display: flex;
     justify-content: space-between;
-}
-
-.dashboard-btn {
     
 }
 
