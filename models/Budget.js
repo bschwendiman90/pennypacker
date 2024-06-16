@@ -14,7 +14,7 @@ Budget.init(
     income: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
