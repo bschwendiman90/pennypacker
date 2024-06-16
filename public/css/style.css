@@ -95,6 +95,10 @@ footer {
 }
 
 /* Start of dashboard rules */
+.format-all {
+    display: flex;
+    justify-content: space-between;
+}
 
 nav {
     display: flex;
@@ -116,4 +120,54 @@ nav {
         font-size: 20px;
         padding: 10px;
     }
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border: 2px red solid;
+    margin: 0 0 0 10%;
+    padding: 10px;
+    min-width: 400px;
+}
+
+.available {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 2px red solid;
+    min-width: 30%;
+    padding: 10px 50px;
+    align-content: inherit;
+    h1 {
+        margin-left: 0;
+        margin-right: 50px;
+        padding: 0 10px;
+        align-content: center;
+    }
+    #budget-income {
+        align-content: center;
+    }
+}
+
+.categories {
+    padding: 20px;
+    text-align: left;
+    border: red solid 2px;
+}
+
+.category-single {
+    display: flex;
+    justify-content: space-between;
+}
+
+#myChart {
+    position: relative;
+    float: right;
+    right: 0;
+    min-width: 2%;
+    max-width: 400px;
+    padding-left: 20px;
 }
