@@ -58,17 +58,17 @@
 {{!-- END OF NEW CATEGORY MODAL --}}
     <main class="dashboard">
         {{#if budget}}
-        <div class="available">
+        <div class="money-total">
             <h1>Available</h1>
-            <div id="budget-income">{{ budget.remainingBudget }}</div> <!-- Display remaining budget -->
+            <div id="budget-income" class="total-amount">{{ budget.remainingBudget }}</div> <!-- Display remaining budget -->
         </div>
         <div class="categories">
             {{#each budget.categories as |category| }}
-            <div class="category-single">
+            <div class="box-single">
                 <h2>
                     <a href="/category/{{ category.id }}">{{ category.category_name }}</a>
                 </h2>
-                <div id="category-{{ category.id }}">
+                <div id="category-{{ category.id }}" class="amount">
                     {{ category.available }}
                 </div>
             </div>
