@@ -17,8 +17,8 @@ Or, if you want a more simple approach, here's our render page: (insert link her
 
 In order to use PennyPacker users need to create a profile with a username and password. Once they are logged in they start by creating a new budget and adding their income. After they have their income they can start adding categories and assigning amounts to them. This will subtract the total category amounts from the available income. To add transactions they need to click on the name of the category which will take them to a new page where they can add a transaction that will be subtracted from the category's available budget.
 
-![dashboard](assets\images\dashboard.png)    
-![dashboard](assets\images\category.png)
+![dashboard](./assets/images/dashboard.png)    
+![dashboard](./assets/images/category.png)
 
 
 ## Credits
