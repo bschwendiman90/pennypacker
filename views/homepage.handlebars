@@ -1,21 +1,27 @@
-<div class="forms">
-    <form class="login-form">
-        {{!-- form content for LOG in--}}
-        <label for="username-login">Username:</label>
-        <input type="text" id="username-login">
-        <label for="password-login">Password:</label>
-        <input type="password" id="password-login">
-        <button type="submit">Log in</button>
-    </form>
-    <p class="redirect">Or <a href="/signup">sign up</a></p>
-</div>
-    <aside>
-        <p class="description">
-                Take the First Step Towards Financial Awareness with PennyPacker
-                PennyPacker is your gateway to a more mindful budgeting journey. While it doesn't automate your finances, it empowers you to track every dollar spent and understand its impact.
-                Joining PennyPacker isn't just about signing up—it's about taking control. It's your first stride towards financial responsibility and consciousness.
-                Start today with PennyPacker and gain insights into your spending habits. See where your money goes and begin making informed financial decisions. Together, let's build a brighter financial future.
-        </p>
-    </aside>
+ <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="forms">
+                    <form class="login-form">
+                        <label for="username-login">Username:</label>
+                        <input type="text" id="username-login" class="form-control mb-3" />
+                        <label for="password-login">Password:</label>
+                        <input type="password" id="password-login" class="form-control mb-3" />
+                        <button type="submit" class="btn">Log in</button>
+                    </form>
+                    <p class="redirect">Or <a href="/signup">sign up</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <aside>
+                    <div class="description">
+                        <p>
+                            PennyPacker is your gateway to a more mindful budgeting journey. While it doesn't automate your finances, it empowers you to track every dollar spent and understand its impact.
+                        </p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
 
 <script src="../js/login.js"></script>
