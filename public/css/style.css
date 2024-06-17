@@ -177,7 +177,7 @@ nav {
 .dashboard {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-content: center;
     border-right: 2px var(--ash) solid;
     border-left: 2px var(--ash) solid;
