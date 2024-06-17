@@ -1,9 +1,11 @@
 
-<div class="format-all">
-    <nav>
-        <a href="/dashboard"> << Dashboard</a>
-        <button type="button" id="new-transaction" data-bs-toggle="modal" data-bs-target="#transaction-modal">New Transaction</button>
-        <button id="logout">Logout</button>
+<div class="container-fluid">
+
+<div class="format-all row">
+    <nav class="col-md-2 col-12">
+        <a href="/dashboard" class="btn btn-primary w-100 mb-2"> << Dashboard</a>
+        <button type="button" id="new-transaction" class="btn btn-primary w-100 mb-2" data-bs-toggle="modal" data-bs-target="#transaction-modal">New Transaction</button>
+        <button id="logout" class="btn btn-primary w-100 mb-2">Logout</button>
     </nav>
     {{!-- START OF NEW TRANSACTION MODAL --}}
     <div class="modal" id="transaction-modal" aria-hidden="true" aria-labelledby="transactionModalLabel" tabindex="-1">
@@ -33,15 +35,15 @@
         </div>
     </div>
     {{!-- Modal space --}}
-    <main class="dashboard">
-        <div class="money-total">
+    <main class="col-md-6 col-12 dashboard">
+        <div class="money-total mb-3">
             <h1>{{ category.category_name }}</h1>
             <div id="available" class="total-amount">{{ category.availableAmount }}</div> <!-- Display available amount -->
         </div>
         {{#if category.transactions.length}}
-        <div>
+        <div class="categories">
             {{#each category.transactions as |transaction| }}
-            <div class="box-single">
+            <div class="box-single mb-3">
                 <h2>
                     {{ transaction.description }}
                 </h2>
@@ -55,16 +57,72 @@
             <p>Add a transaction using the 'New Transaction' button</p>
         {{/if}}
     </main>
-    <aside>
-        {{!-- chart --}}
+        <aside class="col-md-4 col-12">
+       <canvas id="categoryChart" class="chart-canvas" width="400" height="400"></canvas>
     </aside>
+    
+</div>
 </div>
 
 <script src="../js/logout.js"></script>
 <script src="../js/category.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"
     ></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const category = {{{json category}}}; // Ensure the budget object is passed to the script
+        if (category && category.transactions) {
+            const labels = category.transactions.map(transaction => transaction.description);
+            const data = category.transactions.map(transaction => transaction.amount); // Corrected variable name to transaction.amount
+
+            const ctx = document.getElementById('categoryChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Transactions',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Transactions'
+                        }
+                    }
+                }
+            });
+        } else {
+            console.error('No budget data available');
+        }
+    });
+</script>

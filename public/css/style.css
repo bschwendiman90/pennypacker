@@ -21,6 +21,17 @@ header {
     }
 }
 
+        body {
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .dashboard-btns, aside {
+            min-height: 100vh; /* Ensure full height */
+        }
+        .dashboard {
+            flex: 1; /* Allow the main content to take up remaining space */
+        }
+
+
 main {
     margin: 40px;
     display: flex;
@@ -39,6 +50,43 @@ footer {
 /* These are found in the homepage */
 
 .forms {
+    border: 2px solid var(--grey);
+    border-radius: 30px;
+    background-color: var(--ash);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    margin-right: 10px; /* Add margin between sections on large screens */
+}
+.forms label {
+    font-size: 23px;
+    display: block;
+}
+.forms input {
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 20px;
+}
+.forms button {
+    margin-top: 10px;
+    font-size: 20px;
+    background-color: var(--grey);
+    color: var(--cream);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.description {
+    border: 2px solid var(--grey);
+    border-radius: 30px;
+    background-color: var(--ash);
+    max-width: 70%;
+    padding: 20px;
+    font-size: 25px;
+    line-height: 32px;
+}
+
+/* .forms {
     border: 2px var(--grey) solid;
     border-radius: 30px;
     background-color: var(--ash);
@@ -62,6 +110,17 @@ footer {
     }
 }
 
+.description {
+    border: var(--grey) 2px solid;
+    border-radius: 30px;
+    max-width: 70%;
+    padding: 20px;
+    margin-left: 20%;
+    font-size: 25px;
+    background-color: var(--ash);
+    line-height: 32px;
+} */
+
 .login-form {
     margin: 20px;
     padding: 20px;
@@ -83,16 +142,6 @@ footer {
     }
 }
 
-.description {
-    border: var(--grey) 2px solid;
-    border-radius: 30px;
-    max-width: 70%;
-    padding: 20px;
-    margin-left: 20%;
-    font-size: 25px;
-    background-color: var(--ash);
-    line-height: 32px;
-}
 
 /* Start of dashboard rules */
 .format-all {
@@ -192,14 +241,14 @@ nav {
     }
 }
 
-#myChart {
+/* #myChart {
     position: relative;
     float: right;
     right: 0;
     min-width: 2%;
     max-width: 400px;
     padding-left: 20px;
-}
+} */
 
 /* Modal styling */
 
@@ -223,4 +272,14 @@ nav {
 
 .btn-primary:focus {
     background-color: #4e5392;
+}
+
+@media (max-width: 767px) {
+    .forms, .description {
+        margin-right: 0; /* Remove margin for stacked layout */
+        margin-bottom: 20px; /* Add space between stacked sections */
+    }
+    .forms {
+        margin-bottom: 20px; /* Add extra space below .forms */
+    }
 }
