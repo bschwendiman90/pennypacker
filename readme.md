@@ -11,7 +11,7 @@ This project was built because it's difficult to manage finances and in the curr
 
 The first thing that needs to be done is a .env file needs to be made with DB_NAME, DB_USER, DB_PASSWORD. Then, the database needs to be initialized using postgreSQL using the schema in the db file. Then, you need to run npm i in the command line to get the needed npm packages. Finally, you can run the server locally using node server.js in the command line. 
 
-Or, if you want a more simple approach, here's our render page: (insert link here)
+Or, if you want a more simple approach, here's our render page: [(PennyPacker on Render)](https://pennypacker.onrender.com/)
 
 ## Usage
 
